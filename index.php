@@ -1,3 +1,5 @@
+<?php include ("contact_form_process.php"); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Roboto:ital,wght@1,300&display=swap" rel="stylesheet"> 
 
-    <!-- // ---- Fontawesome ---- // -->
+    <!-- Fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Js script -->
@@ -65,23 +67,23 @@
                     <h3 class="formTitle">Contact us</h3>
                     <p class="formTxt">Please fill this form before submitting</p>
                 </div>
-                <form action="" class="form">
+                <form action="/assets/php/contact_form_process.php" method="post" class="form">
                     <div class="formItem">
                         <span class="itemIcon material-symbols-outlined">person</span>
-                        <input type="text" class="formInput nameInput" placeholder="Enter your full name" required>
+                        <input type="text" name="contact_name" class="formInput nameInput" placeholder="Enter your full name" required>
                         <p class="nameError"></p>
                     </div>
                     <div class="formItem">
                         <span class="itemIcon material-symbols-outlined">mail</span>
-                        <input type="email" class="formInput" placeholder="Enter Email" required autofocus>
+                        <input type="contact_email" name="email" class="formInput" placeholder="Enter Email" required autofocus>
                         <p class="emailError"></p>
                     </div>
                     <div class="formItem">
                         <span class="itemIcon material-symbols-outlined">comment</span>
-                        <input type="text" class="formInput messageInput" placeholder="Your message" required autofocus>
+                        <input type="text" name="contact_message" class="formInput messageInput" placeholder="Your message" required autofocus>
                         <p class="messageError"></p>
                     </div>
-                    <button class="formBtn" type="submit">SUBMIT</button>
+                    <button class="formBtn" name="contact_submit" type="submit">SUBMIT</button>
                 </form>
                 <div class="formFooter" id="loginFooter">
                     <span></span>
@@ -101,7 +103,7 @@
                     <h3 class="formTitle">Sign In</h3>
                     <p class="formTxt">Please login to use platform</p>
                 </div>
-                <form action="" class="form">
+                <form action="/assets/php/login_form_process.php" method="post" class="form">
                     <div class="formItem">
                         <span class="itemIcon material-symbols-outlined">mail</span>
                         <input type="email" class="formInput" placeholder="Enter Email" required autofocus>
@@ -157,7 +159,7 @@
                     <h3 class="formTitle">Sign Up</h3>
                     <p class="formTxt">If you don't have an account, please sign up to use platform</p>
                 </div>
-                <form action="" class="form">
+                <form action="/assets/php/signup_form_process.php" method="post" class="form">
                     <div class="formItem">
                         <span class="itemIcon material-symbols-outlined">mail</span>
                         <input type="email" class="formInput" placeholder="Enter Email" required autofocus>
