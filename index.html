@@ -1,5 +1,3 @@
-<?php include ("contact_form_process.php"); ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,12 +41,13 @@
                     <p>Designed and developed by <a href="https://simonbenet.com/index.html" title="Link to my website" rel="noopener noreferrer" target="_blank" ><strong>Simon Bénet</strong></a></p>
                 </div>
                 <div id="contactIconsContainer">
-                    <a href="" class="externLink" rel="noopener noreferrer" target="_blank"><img class="externLinkIcons" title="Link to my Facebook profile" src="/assets/img/svg/facebook.svg" alt="Facebook icon"></a>
-                    <a href="" class="externLink" title="link to my Linkedin profile" rel="noopener noreferrer" target="_blank"><img class="externLinkIcons" src="/assets/img/svg/linkedin.svg" alt="Linkedin icon" rel="noopener noreferrer" target="_blank"></a>
-                    <a href="" class="externLink" title="link to my Instagram profile" rel="noopener noreferrer" target="_blank"><img class="externLinkIcons" src="/assets/img/svg/instagram.svg" alt="Instagram icon"></a>
-                    <a href="" class="externLink" title="Link to my Github profile" rel="noopener noreferrer" target="_blank"><img class="externLinkIcons" src="/assets/img/svg/github-black.svg" alt="Github icon"></a>
-                    <a href="" class="externLink" title="Link to my Codepen profile" rel="noopener noreferrer" target="_blank"><img class="externLinkIcons" src="/assets/img/svg/codepen-black.svg" alt="Codepen icon"></a>
-                    <a href="https://simonbenet.com/index.html" class="externLink"  title="Link to my personal website" rel="noopener noreferrer" target="_blank"><img class="externLinkIcons" src="/assets/img/svg/website.svg" alt="Website icon"></a>
+                    <!-- <a href="" class="externLink" rel="noopener noreferrer" target="_blank"><img class="externLinkIcons" title="Link to my Facebook profile" src="/assets/img/svg/facebook.svg" alt="Facebook icon"></a> -->
+                    <a href="https://www.linkedin.com/in/simon-b%C3%A9net/" class="externLink" title="link to my Linkedin profile" rel="noopener noreferrer" target="_blank"><img class="externLinkIcons" src="https://cdn-icons-png.flaticon.com/128/3128/3128219.png" alt="Linkedin icon"></a>
+                    <a href="https://www.fiverr.com/simonbenet" class="externLink" title="Lien vers mon profil Fiverr" rel="noopener noreferrer" target="_blank"><img class="externLinkIcons" src="https://cdn-icons-png.flaticon.com/128/732/732025.png" alt="Logo fiverr au format svg"></a>
+                    <!-- <a href="" class="externLink" title="link to my Instagram profile" rel="noopener noreferrer" target="_blank"><img class="externLinkIcons" src="/assets/img/svg/instagram.svg" alt="Instagram icon"></a> -->
+                    <a href="https://github.com/SimonBnt" class="externLink" title="Link to my Github profile" rel="noopener noreferrer" target="_blank"><img class="externLinkIcons" src="https://cdn-icons-png.flaticon.com/128/2111/2111432.png" alt="Github icon"></a>
+                    <!-- <a href="" class="externLink" title="Link to my Codepen profile" rel="noopener noreferrer" target="_blank"><img class="externLinkIcons" src="/assets/img/svg/codepen-black.svg" alt="Codepen icon"></a> -->
+                    <a href="https://simonbenet.com" class="externLink"  title="Link to my personal website" rel="noopener noreferrer" target="_blank"><img class="externLinkIcons" src="https://cdn-icons-png.flaticon.com/128/3138/3138305.png" alt="Website icon"></a>
                 </div>
             </div>
         </div>
@@ -67,27 +66,31 @@
                     <h3 class="formTitle">Contact us</h3>
                     <p class="formTxt">Please fill this form before submitting</p>
                 </div>
-                <form action="/assets/php/contact_form_process.php" method="post" class="form">
+                <form action="contact_form_process.php" method="POST" class="forms" id="contactForm">
                     <div class="formItem">
                         <span class="itemIcon material-symbols-outlined">person</span>
-                        <input type="text" name="contact_name" class="formInput nameInput" placeholder="Enter your full name" required>
-                        <p class="nameError"></p>
+                        <input type="text" name="name" class="formInput nameInput" placeholder="Enter your full name" onblur="validateName()" required>
+                        <div class="nameValidation"></div>
+
                     </div>
                     <div class="formItem">
                         <span class="itemIcon material-symbols-outlined">mail</span>
-                        <input type="contact_email" name="email" class="formInput" placeholder="Enter Email" required autofocus>
-                        <p class="emailError"></p>
+                        <input type="email" name="email" class="formInput" placeholder="Enter Email" onblur="validateEmail()" required autofocus>
+                        <div class="emailValidation"></div>
                     </div>
                     <div class="formItem">
                         <span class="itemIcon material-symbols-outlined">comment</span>
-                        <input type="text" name="contact_message" class="formInput messageInput" placeholder="Your message" required autofocus>
-                        <p class="messageError"></p>
+                        <input type="text" name="message" class="formInput messageInput" placeholder="Your message" onblur="validateMessage()" required autofocus>
+                        <div class="messageValidation"></div>
                     </div>
-                    <button class="formBtn" name="contact_submit" type="submit">SUBMIT</button>
+                    <button class="formBtn" name="submit" type="submit">SUBMIT</button>
+                    <div class="errorMessagesContainers">
+                        <div class="nameError"></div>
+                        <div class="emailError"></div>
+                        <div class="messageError"></div>
+                        <div id="contactErrorMessages"></div>
+                    </div>
                 </form>
-                <div class="formFooter" id="loginFooter">
-                    <span></span>
-                </div>
             </div>
         </div>
         
@@ -103,29 +106,35 @@
                     <h3 class="formTitle">Sign In</h3>
                     <p class="formTxt">Please login to use platform</p>
                 </div>
-                <form action="/assets/php/login_form_process.php" method="post" class="form">
+                <form action="login_form_process.php" method="POST" class="forms" id="loginForm">
                     <div class="formItem">
                         <span class="itemIcon material-symbols-outlined">mail</span>
-                        <input type="email" class="formInput" placeholder="Enter Email" required autofocus>
-                        <p class="emailError"></p>
+                        <input type="email" onblur="validateEmail()" class="formInput" placeholder="Enter Email" required autofocus>
+                        <div class="emailValidation"></div>
                     </div>
                     <div class="formItem">
                         <span class="itemIcon material-symbols-outlined">lock</span>
-                        <input type="password" class="formInput" placeholder="Enter Password" required>
+                        <input type="password" name="password" class="formInput" placeholder="Enter Password" onblur="validatePassword()" required>
+                        <div class="passwordValidation"></div>
                         <span class="material-symbols-outlined showIcon">visibility</span>
                         <span class="material-symbols-outlined hideIcon">visibility_off<span>
                     </div>
                     <div class="formItemOther">
                         <div id="checkboxContainer">
-                            <input type="checkbox" id="remenberMeCheckbox">
+                            <input type="checkbox" name="checkbox" id="remenberMeCheckbox">
                             <label for="remenberMeCheckbox">Remember me</label>
                         </div>
                         <a href="#">I forgot my password !</a>
                     </div>
-                    <button class="formBtn" type="submit">Sign In</button>
+                    <button class="formBtn" name="submit" type="submit">Sign In</button>
                 </form>
                 <div class="formFooter" id="loginFooter">
                     <span>Don't have an account ?</span><a href="#"> Create a free account here !</a>
+                </div>
+                <div class="errorMessagesContainers">
+                    <div class="emailError"></div>
+                    <div class="passwordError"></div>
+                    <div id="loginErrorMessages"></div>
                 </div>
             </div>
             <div id="formCardSocial">
@@ -159,28 +168,36 @@
                     <h3 class="formTitle">Sign Up</h3>
                     <p class="formTxt">If you don't have an account, please sign up to use platform</p>
                 </div>
-                <form action="/assets/php/signup_form_process.php" method="post" class="form">
+                <form action="signup_form_process.php" method="POST" class="forms" id="signUpForm">
                     <div class="formItem">
                         <span class="itemIcon material-symbols-outlined">mail</span>
-                        <input type="email" class="formInput" placeholder="Enter Email" required autofocus>
-                        <p class="emailError"></p>
+                        <input type="email" onblur="validateEmail()" class="formInput" placeholder="Enter Email" required autofocus>
+                        <div class="emailValidation"></div>
                     </div>
                     <div class="formItem">
                         <span class="itemIcon material-symbols-outlined">lock</span>
-                        <input type="password" class="formInput" placeholder="Enter Password" required>
+                        <input type="password" name="password" class="formInput" placeholder="Enter Password" onblur="validatePassword()" required>
+                        <div class="passwordValidation"></div>
                         <span class="material-symbols-outlined showIcon">visibility</span>
                         <span class="material-symbols-outlined hideIcon">visibility_off<span>
                     </div>
                     <div class="formItem">
                         <span class="itemIcon material-symbols-outlined">lock</span>
                         <span class="material-symbols-outlined showIcon">visibility</span>
-                        <input type="password" class="formInput" placeholder="Confirm Password" required>
+                        <input type="password" name="samepassword" class="formInput" placeholder="Confirm Password" onblur="validateSamePassword()" required>
                         <span class="material-symbols-outlined hideIcon">visibility_off<span>
+                        <div class="samePasswordValidation"></div>
                     </div>
-                    <button class="formBtn" type="submit">sign up</button>
+                    <button class="formBtn" name="submit" type="submit">sign up</button>
                 </form>
                 <div class="formFooter" id="loginFooter">
                     <span>Already have an account ?</span><a href="#"> Login here !</a>
+                </div>
+                <div class="errorMessagesContainers">
+                    <div class="emailError"></div>
+                    <div class="passwordError"></div>
+                    <div class="samePasswordError"></div>
+                    <div id="signUpErrorMessages"></div>
                 </div>
             </div>
             <div id="formCardSocial">
@@ -202,8 +219,5 @@
             </div>
         </div>
     </main>
-    <footer>
-        <!-- <div id="submitError"><p id="errorMessage"></p></div> -->
-    </footer>
 </body>
 </html>
