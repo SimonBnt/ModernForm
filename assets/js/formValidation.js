@@ -31,21 +31,18 @@ const signUpErrorMessages = document.querySelectorAll("#signUpErrorMessages")
 const validateName = () => {
     nameInputs.forEach((input, index) => {
         if (input.value === "" || input.value == null) {
-            nameErrorMessage[index].innerHTML = ""
             nameValidationMessage[index].innerHTML = ""
             nameErrorMessage[index].innerHTML = "Your name must be complete"
             nameErrorMessage[index].style.color = "red"
 
         } else if (!input.value.match(/^[A-Za-z\s]+$/)) {
-            nameErrorMessage[index].innerHTML = ""
             nameValidationMessage[index].innerHTML = ""
             nameErrorMessage[index].innerHTML = "The name must be in correct format"
             nameErrorMessage[index].style.color = "red"
-            
         } else {
             nameErrorMessage[index].innerHTML = ""
             nameValidationMessage[index].innerHTML = "<i class='fas fa-check-circle'></i>"
-            nameValidationMessage[index].style.color = "green"
+            nameValidationMessage[index].style.color = "mediumseagreen"
             nameValidationMessage[index].style.position = "absolute"
             nameValidationMessage[index].style.top = "50%"
             nameValidationMessage[index].style.right = "1rem"
@@ -58,21 +55,17 @@ const validateName = () => {
 const validateEmail = () => {
     emailInputs.forEach((input, index) => {
         if (input.value === "" || input.value == null) {
-            emailErrorMessage[index].innerHTML = ""
             emailValidationMessage[index].innerHTML = ""
             emailErrorMessage[index].innerHTML = "Your mail have to be complete"
             emailErrorMessage[index].style.color = "red"
-
         } else if (!input.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
-            emailErrorMessage[index].innerHTML = ""
+            emailValidationMessage[index].innerHTML = ""
             emailErrorMessage[index].innerHTML = "Your mail must be in correct format"
             emailErrorMessage[index].style.color = "red"
-            emailValidationMessage[index].innerHTML = ""
-
         } else {
             emailErrorMessage[index].innerHTML = ""
             emailValidationMessage[index].innerHTML = "<i class='fas fa-check-circle'></i>"
-            emailValidationMessage[index].style.color = "green"
+            emailValidationMessage[index].style.color = "mediumseagreen"
             emailValidationMessage[index].style.position = "absolute"
             emailValidationMessage[index].style.top = "50%"
             emailValidationMessage[index].style.right = "1rem"
@@ -85,14 +78,13 @@ const validateEmail = () => {
 const validateMessage = () => {
     messageInputs.forEach((input, index) => {
         if (input.value === "" || input.value == null) {
-            messageErrorMessage[index].innerHTML = ""
             messageValidationMessage[index].innerHTML = ""
             messageErrorMessage[index].innerHTML = "A message is necessary to understand your need."
             messageErrorMessage[index].style.color = "red"
         } else {
             messageErrorMessage[index].innerHTML = ""
             messageValidationMessage[index].innerHTML = "<i class='fas fa-check-circle'></i>"
-            messageValidationMessage[index].style.color = "green"
+            messageValidationMessage[index].style.color = "mediumseagreen"
             messageValidationMessage[index].style.position = "absolute"
             messageValidationMessage[index].style.top = "50%"
             messageValidationMessage[index].style.right = "1rem"
@@ -105,19 +97,17 @@ const validateMessage = () => {
 const validatePassword = () => {
     passwordInputs.forEach((input, index) => {
         if (input.value === "" || input.value == null) {
-            passwordErrorMessage[index].innerHTML = ""
             passwordValidationMessage[index].innerHTML = ""
             passwordErrorMessage[index].innerHTML = "Your password must not be empty to be completed"
             passwordErrorMessage[index].style.color = "red"
         } else if (!input.value.match(/^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z]).{8,}$/)) {
-            passwordErrorMessage[index].innerHTML = ""
             passwordValidationMessage[index].innerHTML = ""
             passwordErrorMessage[index].innerHTML = "Your password must have at least : one uppercase letter, one digit (number), one special character from the set !@#$%^&*, one lowercase letter, and at least 8 characters in total"
             passwordErrorMessage[index].style.color = "red"
         } else {
             passwordErrorMessage[index].innerHTML = ""
             passwordValidationMessage[index].innerHTML = "<i class='fas fa-check-circle'></i>"
-            passwordValidationMessage[index].style.color = "green"
+            passwordValidationMessage[index].style.color = "mediumseagreen"
             passwordValidationMessage[index].style.position = "absolute"
             passwordValidationMessage[index].style.top = "50%"
             passwordValidationMessage[index].style.right = "4rem"
@@ -136,7 +126,7 @@ const validateSamePassword = () => {
         } else {
             samePasswordErrorMessage[index].innerHTML = "" 
             samePasswordValidationMessage[index].innerHTML = "<i class='fas fa-check-circle'></i>"
-            samePasswordValidationMessage[index].style.color = "green"
+            samePasswordValidationMessage[index].style.color = "mediumseagreen"
             samePasswordValidationMessage[index].style.position = "absolute"
             samePasswordValidationMessage[index].style.top = "50%"
             samePasswordValidationMessage[index].style.right = "4rem"
@@ -159,16 +149,18 @@ contactForm.addEventListener("submit", (e) => {
     if (isFormValid) {
         contactErrorMessages[0].style.display = "block"
         contactErrorMessages[0].innerHTML = "Your form has been submitted successfully."
+        contactErrorMessages[0].style.color = "mediumseagreen"
         setTimeout(function () {
             contactErrorMessages[0].style.display = "none"
-        }, 3000)
+        }, 10000)
         contactForm.submit()
     } else {
         contactErrorMessages[0].style.display = "block"
         contactErrorMessages[0].innerHTML = "Please fill the form correctly before submitting."
+        contactErrorMessages[0].style.color = "indianred"
         setTimeout(function () {
             contactErrorMessages[0].style.display = "none"
-        }, 3000)
+        }, 10000)
     }
 })
 
@@ -184,16 +176,18 @@ loginForm.addEventListener("submit", (e) => {
     if (isFormValid) {
         loginErrorMessages[0].style.display = "block"
         loginErrorMessages[0].innerHTML = "Your login form has been submitted successfully."
+        loginErrorMessages[0].style.color = "mediumseagreen"
         setTimeout(function () {
             loginErrorMessages[0].style.display = "none"
-        }, 3000)
+        }, 10000)
         loginForm.submit()
     } else {
         loginErrorMessages[0].style.display = "block"
         loginErrorMessages[0].innerHTML = "Please fill the form correctly before submitting."
+        loginErrorMessages[0].style.color = "indianred"
         setTimeout(function () {
             loginErrorMessages[0].style.display = "none"
-        }, 3000)
+        }, 10000)
     }
 })
 
@@ -210,15 +204,17 @@ signUpForm.addEventListener("submit", (e) => {
     if (isFormValid) {
         signUpErrorMessages[0].style.display = "block"
         signUpErrorMessages[0].innerHTML = "Your sign-up form has been submitted successfully."
+        signUpErrorMessages[0].style.color = "mediumseagreen"
         setTimeout(function () {
             signUpErrorMessages[0].style.display = "none"
-        }, 3000)
+        }, 10000)
         signUpForm.submit()
     } else {
         signUpErrorMessages[0].style.display = "block"
         signUpErrorMessages[0].innerHTML = "Please fill the form correctly before submitting."
+        signUpErrorMessages[0].style.color = "indianred"
         setTimeout(function () {
             signUpErrorMessages[0].style.display = "none"
-        }, 3000)
+        }, 10000)
     }
 })

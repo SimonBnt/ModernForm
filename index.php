@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Javascript Form</title>
+    <title>Modern Form</title>
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="assets/css/styles.min.css">
@@ -19,15 +19,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Js script -->
-    <script src="/assets/js/burgerMenu.js" defer></script>
-    <script src="/assets/js/showHidePassword.js" defer></script>
-    <script src="/assets/js/formValidation.js" defer></script>
+    <script src="./assets/js/burgerMenu.js" defer></script>
+    <script src="./assets/js/showHidePassword.js" defer></script>
+    <script src="./assets/js/formValidation.js" defer></script>
 </head>
 <body>
     <header>
-        <img id="logo" src="/assets/img/SBT.png" alt="logo">
+        <img id="logo" src="./assets/img/SBT.png" alt="logo">
         <div id="h1Container">
-            <h1>Modern Javascript Form</h1>
+            <h1>Modern Form</h1>
         </div>
         <div id="burgerMenuMainContainer">
             <div id="burgerMenuOpenerContainer">
@@ -54,53 +54,13 @@
     </header>
     <main>
         
-                           <!-- CONTACT FORM -->
-
-        <h2 class="formName" id="contactFormName">Contact Form</h2>
-        <div class="formMainContainer" id="contactFormContainer">
-            <div class="card">
-                <div class="cardLogoContainer">
-                    <img src="/assets/img/svg/brain.svg" alt="brain svg" class="formLogo">
-                </div>
-                <div class="cardHeader">
-                    <h3 class="formTitle">Contact us</h3>
-                    <p class="formTxt">Please fill this form before submitting</p>
-                </div>
-                <form action="contact_form_process.php" method="POST" class="forms" id="contactForm">
-                    <div class="formItem">
-                        <span class="itemIcon material-symbols-outlined">person</span>
-                        <input type="text" name="name" class="formInput nameInput" placeholder="Enter your full name" onblur="validateName()" required>
-                        <div class="nameValidation"></div>
-
-                    </div>
-                    <div class="formItem">
-                        <span class="itemIcon material-symbols-outlined">mail</span>
-                        <input type="email" name="email" class="formInput" placeholder="Enter Email" onblur="validateEmail()" required autofocus>
-                        <div class="emailValidation"></div>
-                    </div>
-                    <div class="formItem">
-                        <span class="itemIcon material-symbols-outlined">comment</span>
-                        <input type="text" name="message" class="formInput messageInput" placeholder="Your message" onblur="validateMessage()" required autofocus>
-                        <div class="messageValidation"></div>
-                    </div>
-                    <button class="formBtn" name="submit" type="submit">SUBMIT</button>
-                    <div class="errorMessagesContainers">
-                        <div class="nameError"></div>
-                        <div class="emailError"></div>
-                        <div class="messageError"></div>
-                        <div id="contactErrorMessages"></div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        
                              <!-- LOGIN FORM -->
         
         <h2 class="formName" id="loginFormName">Login Form</h2>
         <div class="formMainContainer" id="loginFormContainer">
             <div class="card">
                 <div class="cardLogoContainer">
-                    <img src="/assets/img/svg/brain.svg" alt="brain svg" class="formLogo">
+                    <img src="./assets/img/svg/brain.svg" alt="brain svg" class="formLogo">
                 </div>
                 <div class="cardHeader">
                     <h3 class="formTitle">Sign In</h3>
@@ -162,7 +122,7 @@
         <div class="formMainContainer" id="signUpFormContainer">
             <div class="card">
                 <div class="cardLogoContainer">
-                    <img src="/assets/img/svg/brain.svg" alt="brain svg" class="formLogo">
+                    <img src="./assets/img/svg/brain.svg" alt="brain svg" class="formLogo">
                 </div>
                 <div class="cardHeader">
                     <h3 class="formTitle">Sign Up</h3>
@@ -216,6 +176,46 @@
                         </svg>
                     </a>
                 </div>
+            </div>
+        </div>
+
+                  <!-- CONTACT FORM -->
+
+        <h2 class="formName" id="contactFormName">Contact Form</h2>
+        <div class="formMainContainer" id="contactFormContainer">
+            <div class="card">
+                <div class="cardLogoContainer">
+                    <img src="./assets/img/svg/brain.svg" alt="brain svg" class="formLogo">
+                </div>
+                <div class="cardHeader">
+                    <h3 class="formTitle">Contact us</h3>
+                    <p class="formTxt">Please fill this form before submitting</p>
+                </div>
+                <form action="form_process.php" method="POST" class="forms" id="contactForm">
+                    <div class="formItem">
+                        <span class="itemIcon material-symbols-outlined">person</span>
+                        <input type="text" name="name" class="formInput nameInput" placeholder="Enter your full name" onblur="validateName()" required>
+                        <div class="nameValidation"></div>
+
+                    </div>
+                    <div class="formItem">
+                        <span class="itemIcon material-symbols-outlined">mail</span>
+                        <input type="email" name="email" class="formInput" placeholder="Enter Email" onblur="validateEmail()" required autofocus>
+                        <div class="emailValidation"></div>
+                    </div>
+                    <div class="formItem">
+                        <span class="itemIcon material-symbols-outlined">comment</span>
+                        <input type="text" name="message" class="formInput messageInput" placeholder="Your message" onblur="validateMessage()" required autofocus>
+                        <div class="messageValidation"></div>
+                    </div>
+                    <button class="formBtn" name="submit" type="submit">SUBMIT</button>
+                    <div class="errorMessagesContainers">
+                        <div class="nameError"></div>
+                        <div class="emailError"></div>
+                        <div class="messageError"></div>
+                        <div id="contactErrorMessages"></div>
+                    </div>
+                </form>
             </div>
         </div>
     </main>

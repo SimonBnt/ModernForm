@@ -44,34 +44,19 @@ header {
 
         #burgerMenuOpenerContainer {
             position: absolute;
-            right: 1rem;
-            top: 1rem;
+            right: 0.5rem;
+            top: 0.5rem;
             
-            @include respondTo(mobile) {
-                right: 0rem;
-                top: 0rem;
-            }
-    
-            @include respondTo(sm) {
-                right: 1rem;
-                top: 1rem;
-            }
-    
             @include respondTo(md) {
                 display: none;
             }
             
             .bgMenuBar {
                 margin: 0.5rem;
-                width: 48px;
+                width: 32px;
                 height: 3px;
                 border-radius: 1rem;
                 background-color: white;
-                
-                @include respondTo(mobile) {
-                    margin: 1rem;
-                    width: 64px;
-                }
             }
         }
     
