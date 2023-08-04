@@ -69,13 +69,13 @@
                 <form action="login_form_process.php" method="POST" class="forms" id="loginForm">
                     <div class="formItem">
                         <span class="itemIcon material-symbols-outlined">mail</span>
-                        <input type="email" onblur="validateEmail()" class="formInput" placeholder="Enter Email" required autofocus>
+                        <input type="email" onblur="validateEmail(this, 0)" class="formInput" placeholder="Enter Email" required autofocus>
                         <div class="emailValidation"></div>
                         <div class="emailError"></div>
                     </div>
                     <div class="formItem">
                         <span class="itemIcon material-symbols-outlined">lock</span>
-                        <input type="password" name="password" class="formInput" placeholder="Enter Password" onblur="validatePassword()" required>
+                        <input type="password" name="password" class="formInput" placeholder="Enter Password" onblur="validatePassword(this, 0)" required>
                         <div class="passwordValidation"></div>
                         <span class="material-symbols-outlined showIcon">visibility</span>
                         <span class="material-symbols-outlined hideIcon">visibility_off<span>
@@ -131,13 +131,13 @@
                 <form action="signup_form_process.php" method="POST" class="forms" id="signUpForm">
                     <div class="formItem">
                         <span class="itemIcon material-symbols-outlined">mail</span>
-                        <input type="email" onblur="validateEmail()" class="formInput" placeholder="Enter Email" required autofocus>
+                        <input type="email" onblur="validateEmail(this, 1)" class="formInput" placeholder="Enter Email" required autofocus>
                         <div class="emailValidation"></div>
                         <div class="emailError"></div>
                     </div>
                     <div class="formItem">
                         <span class="itemIcon material-symbols-outlined">lock</span>
-                        <input type="password" name="password" class="formInput" placeholder="Enter Password" onblur="validatePassword()" required>
+                        <input type="password" name="password" class="formInput" placeholder="Enter Password" onblur="validatePassword(this, 1)" required>
                         <div class="passwordValidation"></div>
                         <span class="material-symbols-outlined showIcon">visibility</span>
                         <span class="material-symbols-outlined hideIcon">visibility_off<span>
@@ -146,7 +146,7 @@
                     <div class="formItem">
                         <span class="itemIcon material-symbols-outlined">lock</span>
                         <span class="material-symbols-outlined showIcon">visibility</span>
-                        <input type="password" name="samepassword" class="formInput" placeholder="Confirm Password" onblur="validateSamePassword()" required>
+                        <input type="password" name="samepassword" class="formInput" placeholder="Confirm Password" onblur="validateSamePassword(this, 0)" required>
                         <span class="material-symbols-outlined hideIcon">visibility_off<span>
                         <div class="samePasswordValidation"></div>
                         <div class="samePasswordError"></div>
@@ -194,19 +194,19 @@
                 <form action="form_process.php" method="POST" class="forms" id="contactForm">
                     <div class="formItem">
                         <span class="itemIcon material-symbols-outlined">person</span>
-                        <input type="text" name="name" class="formInput nameInput" placeholder="Enter your full name" onblur="validateName()" required>
+                        <input type="text" name="name" class="formInput nameInput" placeholder="Enter your full name" onblur="validateName(this, 0)" required>
                         <div class="nameValidation"></div>
                         <div class="nameError"></div>
                     </div>
                     <div class="formItem">
                         <span class="itemIcon material-symbols-outlined">mail</span>
-                        <input type="email" name="email" class="formInput" placeholder="Enter Email" onblur="validateEmail()" required autofocus>
+                        <input type="email" name="email" class="formInput" placeholder="Enter Email" onblur="validateEmail(this, 2)" required autofocus>
                         <div class="emailValidation"></div>
                         <div class="emailError"></div>
                     </div>
                     <div class="formItem">
                         <span class="itemIcon material-symbols-outlined">comment</span>
-                        <input type="text" name="message" class="formInput messageInput" placeholder="Your message" onblur="validateMessage()" required autofocus>
+                        <input type="text" name="message" class="formInput messageInput" placeholder="Your message" onblur="validateMessage(this, 0)" required autofocus>
                         <div class="messageValidation"></div>
                         <div class="messageError"></div>
                     </div>
