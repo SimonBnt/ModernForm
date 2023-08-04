@@ -77,9 +77,8 @@ main {
         }
     }
 
-
     .formMainContainer {
-        min-height: 700px;
+        min-height: 600px;
         background: rgba(255, 255, 255, 0.7);
         padding: 2rem 3rem 2rem 3rem;
         border-radius: 1rem;
@@ -120,7 +119,7 @@ main {
                 gap: 1rem 0;
                 justify-content: center;
 
-                .emailError, .nameError, .messageError, .passwordError, .samePasswordError, #contactErrorMessages, #loginErrorMessages, #signUpErrorMessages {
+                #contactErrorMessages, #loginErrorMessages, #signUpErrorMessages {
                     font-size: 0.75rem;
                     position: absolute;
                 }
@@ -271,6 +270,10 @@ main {
 
                     .nameValidation, .emailValidation, .messageValidation, .passwordValidation, .samePasswordValidation {
                         position: absolute;
+                        font-size: 0.75rem;
+                    }
+                    
+                    .emailError, .nameError, .messageError, .passwordError, .samePasswordError {
                         font-size: 0.75rem;
                     }
                 }

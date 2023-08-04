@@ -20,9 +20,9 @@ const samePasswordInputs = document.querySelectorAll("input[name='samepassword']
 const samePasswordErrorMessage = document.querySelectorAll(".samePasswordError")
 const samePasswordValidationMessage = document.querySelectorAll(".samePasswordValidation")
 
-const contactForm = document.querySelector("#contactForm")
-const loginForm = document.querySelector("#loginForm")
-const signUpForm = document.querySelector("#signUpForm")
+// const contactForm = document.getElementById("#contactForm")
+// const loginForm = document.getElementById("#loginForm")
+// const signUpForm = document.getElementById("#signUpForm")
 
 const contactErrorMessages = document.querySelectorAll("#contactErrorMessages")
 const loginErrorMessages = document.querySelectorAll("#loginErrorMessages")
@@ -136,85 +136,85 @@ const validateSamePassword = () => {
     })
 }
 
-contactForm.addEventListener("submit", (e) => {
-    e.preventDefault()
+// contactForm.addEventListener("submit", (e) => {
+//     e.preventDefault()
 
-    validateName()
-    validateEmail()
-    validateMessage()
+//     validateName()
+//     validateEmail()
+//     validateMessage()
 
-    // Check if all fields are valid
-    const isFormValid = !Array.from(contactErrorMessages).some((error) => error.innerHTML !== "")
+//     // Check if all fields are valid
+//     const isFormValid = !Array.from(contactErrorMessages).some((error) => error.innerHTML !== "")
 
-    if (isFormValid) {
-        contactErrorMessages[0].style.display = "block"
-        contactErrorMessages[0].innerHTML = "Your form has been submitted successfully."
-        contactErrorMessages[0].style.color = "mediumseagreen"
-        setTimeout(function () {
-            contactErrorMessages[0].style.display = "none"
-        }, 10000)
-        contactForm.submit()
-    } else {
-        contactErrorMessages[0].style.display = "block"
-        contactErrorMessages[0].innerHTML = "Please fill the form correctly before submitting."
-        contactErrorMessages[0].style.color = "indianred"
-        setTimeout(function () {
-            contactErrorMessages[0].style.display = "none"
-        }, 10000)
-    }
-})
+//     if (isFormValid) {
+//         contactErrorMessages[0].style.display = "block"
+//         contactErrorMessages[0].innerHTML = "Your form has been submitted successfully."
+//         contactErrorMessages[0].style.color = "mediumseagreen"
+//         setTimeout(function () {
+//             contactErrorMessages[0].style.display = "none"
+//         }, 10000)
+//         contactForm.submit()
+//     } else {
+//         contactErrorMessages[0].style.display = "block"
+//         contactErrorMessages[0].innerHTML = "Please fill the form correctly before submitting."
+//         contactErrorMessages[0].style.color = "indianred"
+//         setTimeout(function () {
+//             contactErrorMessages[0].style.display = "none"
+//         }, 10000)
+//     }
+// })
 
-loginForm.addEventListener("submit", (e) => {
-    e.preventDefault()
+// loginForm.addEventListener("submit", (e) => {
+//     e.preventDefault()
 
-    validateEmail()
-    validatePassword()
+//     validateEmail()
+//     validatePassword()
 
-    // Check if all fields are valid
-    const isFormValid = !Array.from(loginErrorMessages).some((error) => error.innerHTML !== "")
+//     // Check if all fields are valid
+//     const isFormValid = !Array.from(loginErrorMessages).some((error) => error.innerHTML !== "")
 
-    if (isFormValid) {
-        loginErrorMessages[0].style.display = "block"
-        loginErrorMessages[0].innerHTML = "Your login form has been submitted successfully."
-        loginErrorMessages[0].style.color = "mediumseagreen"
-        setTimeout(function () {
-            loginErrorMessages[0].style.display = "none"
-        }, 10000)
-        loginForm.submit()
-    } else {
-        loginErrorMessages[0].style.display = "block"
-        loginErrorMessages[0].innerHTML = "Please fill the form correctly before submitting."
-        loginErrorMessages[0].style.color = "indianred"
-        setTimeout(function () {
-            loginErrorMessages[0].style.display = "none"
-        }, 10000)
-    }
-})
+//     if (isFormValid) {
+//         loginErrorMessages[0].style.display = "block"
+//         loginErrorMessages[0].innerHTML = "Your login form has been submitted successfully."
+//         loginErrorMessages[0].style.color = "mediumseagreen"
+//         setTimeout(function () {
+//             loginErrorMessages[0].style.display = "none"
+//         }, 10000)
+//         loginForm.submit()
+//     } else {
+//         loginErrorMessages[0].style.display = "block"
+//         loginErrorMessages[0].innerHTML = "Please fill the form correctly before submitting."
+//         loginErrorMessages[0].style.color = "indianred"
+//         setTimeout(function () {
+//             loginErrorMessages[0].style.display = "none"
+//         }, 10000)
+//     }
+// })
 
-signUpForm.addEventListener("submit", (e) => {
-    e.preventDefault()
+// signUpForm.addEventListener("submit", (e) => {
+//     e.preventDefault()
 
-    validateEmail()
-    validatePassword()
-    validateSamePassword()
+//     validateEmail()
+//     validatePassword()
+//     validateSamePassword()
 
-    // Check if all fields are valid
-    const isFormValid = !Array.from(signUpErrorMessages).some((error) => error.innerHTML !== "")
+//     // Check if all fields are valid
+//     const isFormValid = !Array.from(signUpErrorMessages).some((error) => error.innerHTML !== "")
 
-    if (isFormValid) {
-        signUpErrorMessages[0].style.display = "block"
-        signUpErrorMessages[0].innerHTML = "Your sign-up form has been submitted successfully."
-        signUpErrorMessages[0].style.color = "mediumseagreen"
-        setTimeout(function () {
-            signUpErrorMessages[0].style.display = "none"
-        }, 10000)
-        signUpForm.submit()
-    } else {
-        signUpErrorMessages[0].style.display = "block"
-        signUpErrorMessages[0].innerHTML = "Please fill the form correctly before submitting."
-        signUpErrorMessages[0].style.color = "indianred"
-        setTimeout(function () {
-            signUpErrorMessages[0].style.display = "none"
-        }, 10000)
-    }
-})
+//     if (isFormValid) {
+//         signUpErrorMessages[0].style.display = "block"
+//         signUpErrorMessages[0].innerHTML = "Your sign-up form has been submitted successfully."
+//         signUpErrorMessages[0].style.color = "mediumseagreen"
+//         setTimeout(function () {
+//             signUpErrorMessages[0].style.display = "none"
+//         }, 10000)
+//         signUpForm.submit()
+//     } else {
+//         signUpErrorMessages[0].style.display = "block"
+//         signUpErrorMessages[0].innerHTML = "Please fill the form correctly before submitting."
+//         signUpErrorMessages[0].style.color = "indianred"
+//         setTimeout(function () {
+//             signUpErrorMessages[0].style.display = "none"
+//         }, 10000)
+//     }
+// })

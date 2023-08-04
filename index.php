@@ -71,6 +71,7 @@
                         <span class="itemIcon material-symbols-outlined">mail</span>
                         <input type="email" onblur="validateEmail()" class="formInput" placeholder="Enter Email" required autofocus>
                         <div class="emailValidation"></div>
+                        <div class="emailError"></div>
                     </div>
                     <div class="formItem">
                         <span class="itemIcon material-symbols-outlined">lock</span>
@@ -78,6 +79,7 @@
                         <div class="passwordValidation"></div>
                         <span class="material-symbols-outlined showIcon">visibility</span>
                         <span class="material-symbols-outlined hideIcon">visibility_off<span>
+                        <div class="passwordError"></div>
                     </div>
                     <div class="formItemOther">
                         <div id="checkboxContainer">
@@ -92,8 +94,6 @@
                     <span>Don't have an account ?</span><a href="#"> Create a free account here !</a>
                 </div>
                 <div class="errorMessagesContainers">
-                    <div class="emailError"></div>
-                    <div class="passwordError"></div>
                     <div id="loginErrorMessages"></div>
                 </div>
             </div>
@@ -133,6 +133,7 @@
                         <span class="itemIcon material-symbols-outlined">mail</span>
                         <input type="email" onblur="validateEmail()" class="formInput" placeholder="Enter Email" required autofocus>
                         <div class="emailValidation"></div>
+                        <div class="emailError"></div>
                     </div>
                     <div class="formItem">
                         <span class="itemIcon material-symbols-outlined">lock</span>
@@ -140,6 +141,7 @@
                         <div class="passwordValidation"></div>
                         <span class="material-symbols-outlined showIcon">visibility</span>
                         <span class="material-symbols-outlined hideIcon">visibility_off<span>
+                        <div class="passwordError"></div>
                     </div>
                     <div class="formItem">
                         <span class="itemIcon material-symbols-outlined">lock</span>
@@ -147,6 +149,7 @@
                         <input type="password" name="samepassword" class="formInput" placeholder="Confirm Password" onblur="validateSamePassword()" required>
                         <span class="material-symbols-outlined hideIcon">visibility_off<span>
                         <div class="samePasswordValidation"></div>
+                        <div class="samePasswordError"></div>
                     </div>
                     <button class="formBtn" name="submit" type="submit">sign up</button>
                 </form>
@@ -154,9 +157,6 @@
                     <span>Already have an account ?</span><a href="#"> Login here !</a>
                 </div>
                 <div class="errorMessagesContainers">
-                    <div class="emailError"></div>
-                    <div class="passwordError"></div>
-                    <div class="samePasswordError"></div>
                     <div id="signUpErrorMessages"></div>
                 </div>
             </div>
@@ -196,23 +196,22 @@
                         <span class="itemIcon material-symbols-outlined">person</span>
                         <input type="text" name="name" class="formInput nameInput" placeholder="Enter your full name" onblur="validateName()" required>
                         <div class="nameValidation"></div>
-
+                        <div class="nameError"></div>
                     </div>
                     <div class="formItem">
                         <span class="itemIcon material-symbols-outlined">mail</span>
                         <input type="email" name="email" class="formInput" placeholder="Enter Email" onblur="validateEmail()" required autofocus>
                         <div class="emailValidation"></div>
+                        <div class="emailError"></div>
                     </div>
                     <div class="formItem">
                         <span class="itemIcon material-symbols-outlined">comment</span>
                         <input type="text" name="message" class="formInput messageInput" placeholder="Your message" onblur="validateMessage()" required autofocus>
                         <div class="messageValidation"></div>
+                        <div class="messageError"></div>
                     </div>
                     <button class="formBtn" name="submit" type="submit">SUBMIT</button>
                     <div class="errorMessagesContainers">
-                        <div class="nameError"></div>
-                        <div class="emailError"></div>
-                        <div class="messageError"></div>
                         <div id="contactErrorMessages"></div>
                     </div>
                 </form>
