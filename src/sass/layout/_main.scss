@@ -196,13 +196,15 @@ main {
                 .formItem {
                     position: relative;
 
-                    &::after {
-                        position: absolute;
-                        right: -1rem;
-                        top: 0;
-                        content: "*";
-                        color: red;
-                        opacity: 0.8;
+                    .labelContainers {
+                        margin-bottom: 1rem;
+                        margin-left: 1rem;
+
+                        label {
+                            font-size: 0.75rem;
+                            color: #333;
+                            margin-bottom: 0.5rem;
+                        }
                     }
 
                     .formInput {
@@ -231,50 +233,107 @@ main {
                         accent-color: black;
                     }
 
-                    .itemIcon {
-                        position: absolute;
-                        top: 0.8rem;
-                        left: 1rem;
-                        font-size: 1.5rem;
-                        opacity: 0.5;
-                    }
-                    
-                    .hideIcon {
-                        display: none;
-                        position: absolute;
-                        opacity: 0.5;
-                        top: 50%;
-                        right: 1rem;
-                        transform: translateY(-50%);
-                        font-size: 1rem;
-                        padding: 0.5rem;
-                        
-                        @include respondTo(md) {
-                            cursor: pointer;
-                        }
-                    }
-                    
-                    .showIcon {
-                        position: absolute;
-                        top: 50%;
-                        right: 1rem;
-                        transform: translateY(-50%);
-                        padding: 0.5rem;
-                        opacity: 0.5;
-                        font-size: 1rem;
+                    .inputContainers {
+                        position: relative;
 
-                        @include respondTo(md) {
-                            cursor: pointer;
+                        &::after {
+                            position: absolute;
+                            right: -1rem;
+                            top: 0;
+                            content: "*";
+                            color: red;
+                            opacity: 0.8;
+                        }
+
+                        .itemIcon {
+                            position: absolute;
+                            top: 0.8rem;
+                            left: 1rem;
+                            font-size: 1.5rem;
+                            opacity: 0.5;
+                        }
+                        
+                        .hideIcon {
+                            display: none;
+                            opacity: 0.5;
+                            position: absolute;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            right: 1rem;
+                            font-size: 1rem;
+                            padding: 0.5rem;
+                            
+                            @include respondTo(md) {
+                                cursor: pointer;
+                            }
+                        }
+                        
+                        .showIcon {
+                            position: absolute;
+                            top: 50%;
+                            right: 1rem;
+                            transform: translateY(-50%);
+                            padding: 0.5rem;
+                            opacity: 0.5;
+                            font-size: 1rem;
+    
+                            @include respondTo(md) {
+                                cursor: pointer;
+                            }
+                        }
+    
+                        .eyeIcon--pw {
+                            position: absolute;
+                            top: 20%;
+                            right: 1rem;
+                            transform: translateY(-30%);
+                            padding: 0.5rem;
+                            opacity: 0.5;
+                            font-size: 1rem;
+    
+                            @include respondTo(md) {
+                                cursor: pointer;
+                            }
+                        }
+    
+                        .eyeIcon--spw {
+                            position: absolute;
+                            top: 50%;
+                            right: 1rem;
+                            transform: translateY(-70%);
+                            padding: 0.5rem;
+                            opacity: 0.5;
+                            font-size: 1rem;
+    
+                            @include respondTo(md) {
+                                cursor: pointer;
+                            }
+                        }
+
+                        .validation--pw {
+                            position: absolute;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            padding: 0.5rem;
+                            right: 4rem;
                         }
                     }
 
                     .nameValidation, .emailValidation, .messageValidation, .passwordValidation, .samePasswordValidation {
                         position: absolute;
                         font-size: 0.75rem;
+                        color: mediumseagreen;
+                        position: absolute;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        right: 1rem;
+                        padding: 0.5rem;
                     }
                     
                     .emailError, .nameError, .messageError, .passwordError, .samePasswordError {
                         font-size: 0.75rem;
+                        margin-left: 2rem;
+                        color: red;
                     }
                 }
 

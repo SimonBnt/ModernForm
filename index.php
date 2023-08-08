@@ -68,17 +68,25 @@
                 </div>
                 <form action="login_form_process.php" method="POST" class="forms" id="loginForm">
                     <div class="formItem">
-                        <span class="itemIcon material-symbols-outlined">mail</span>
-                        <input type="email" onblur="validateEmail(this, 0)" class="formInput" placeholder="Enter Email" required autofocus>
+                        <label for="email"></label>
+                        <div class="inputContainers">
+                            <span class="itemIcon material-symbols-outlined">mail</span>
+                            <input type="email" name="email" onblur="validateEmail(this, 0)" class="formInput" placeholder="Enter Email" required>
+                        </div>
                         <div class="emailValidation"></div>
                         <div class="emailError"></div>
                     </div>
                     <div class="formItem">
-                        <span class="itemIcon material-symbols-outlined">lock</span>
-                        <input type="password" name="password" class="formInput" placeholder="Enter Password" onblur="validatePassword(this, 0)" required>
-                        <div class="passwordValidation"></div>
-                        <span class="material-symbols-outlined showIcon">visibility</span>
-                        <span class="material-symbols-outlined hideIcon">visibility_off<span>
+                        <div class="labelContainers">
+                            <label for="password">Your password must have at least :<br>- One uppercase letter<br>- One digit (number)<br>- One special character from the set !@#$%^&*<br>- One lowercase letter<br>- And at least 8 characters in total</label>
+                        </div>
+                        <div class="inputContainers">
+                            <span class="itemIcon material-symbols-outlined">lock</span>
+                            <input type="password" name="password" class="formInput" placeholder="Enter Password" onblur="validatePassword(this, 0)" required>
+                            <span class="material-symbols-outlined showIcon">visibility</span>
+                            <span class="material-symbols-outlined hideIcon">visibility_off</span>
+                            <div class="passwordValidation"></div>
+                        </div>
                         <div class="passwordError"></div>
                     </div>
                     <div class="formItemOther">
@@ -130,25 +138,38 @@
                 </div>
                 <form action="signup_form_process.php" method="POST" class="forms" id="signUpForm">
                     <div class="formItem">
-                        <span class="itemIcon material-symbols-outlined">mail</span>
-                        <input type="email" onblur="validateEmail(this, 1)" class="formInput" placeholder="Enter Email" required autofocus>
+                        <label for="email"></label>
+                        <div class="inputContainers">
+                            <span class="itemIcon material-symbols-outlined">mail</span>
+                            <input type="email" name="email" onblur="validateEmail(this, 1)" class="formInput" placeholder="Enter Email" required>
+                        </div>
                         <div class="emailValidation"></div>
                         <div class="emailError"></div>
                     </div>
                     <div class="formItem">
-                        <span class="itemIcon material-symbols-outlined">lock</span>
-                        <input type="password" name="password" class="formInput" placeholder="Enter Password" onblur="validatePassword(this, 1)" required>
-                        <div class="passwordValidation"></div>
-                        <span class="material-symbols-outlined showIcon">visibility</span>
-                        <span class="material-symbols-outlined hideIcon">visibility_off<span>
+                        <div>
+                            <div class="labelContainers">
+                                <label for="password">Your password must have at least :<br>- One uppercase letter<br>- One digit (number)<br>- One special character from the set !@#$%^&*<br>- One lowercase letter<br>- And at least 8 characters in total</label>
+                            </div>
+                            <div class="inputContainers">
+                                <span class="itemIcon material-symbols-outlined">lock</span>
+                                <input type="password" name="password" class="formInput" placeholder="Enter Password" onblur="validatePassword(this, 1)" required>
+                                <span class="material-symbols-outlined showIcon">visibility</span>
+                                <span class="material-symbols-outlined hideIcon">visibility_off</span>
+                                <div class="passwordValidation"></div>
+                            </div>
+                        </div>
                         <div class="passwordError"></div>
                     </div>
                     <div class="formItem">
-                        <span class="itemIcon material-symbols-outlined">lock</span>
-                        <span class="material-symbols-outlined showIcon">visibility</span>
-                        <input type="password" name="samepassword" class="formInput" placeholder="Confirm Password" onblur="validateSamePassword(this, 0)" required>
-                        <span class="material-symbols-outlined hideIcon">visibility_off<span>
-                        <div class="samePasswordValidation"></div>
+                        <label for="samepassword"></label>
+                        <div class="inputContainers">
+                            <span class="itemIcon material-symbols-outlined">lock</span>
+                            <input type="password" name="samepassword" class="formInput" placeholder="Confirm Password" onblur="validateSamePassword(this, 0)" required>
+                            <span class="material-symbols-outlined showIcon">visibility</span>
+                            <span class="material-symbols-outlined hideIcon">visibility_off</span>
+                            <div class="samePasswordValidation"></div>
+                        </div>
                         <div class="samePasswordError"></div>
                     </div>
                     <button class="formBtn" name="submit" type="submit">sign up</button>
@@ -193,20 +214,29 @@
                 </div>
                 <form action="form_process.php" method="POST" class="forms" id="contactForm">
                     <div class="formItem">
-                        <span class="itemIcon material-symbols-outlined">person</span>
-                        <input type="text" name="name" class="formInput nameInput" placeholder="Enter your full name" onblur="validateName(this, 0)" required>
+                        <label for="name"></label>
+                        <div class="inputContainers">
+                            <span class="itemIcon material-symbols-outlined">person</span>
+                            <input type="text" name="name" class="formInput nameInput" placeholder="Enter your full name" onblur="validateName(this, 0)" >
+                        </div>
                         <div class="nameValidation"></div>
                         <div class="nameError"></div>
                     </div>
                     <div class="formItem">
-                        <span class="itemIcon material-symbols-outlined">mail</span>
-                        <input type="email" name="email" class="formInput" placeholder="Enter Email" onblur="validateEmail(this, 2)" required autofocus>
+                        <label for="email"></label>
+                        <div class="inputContainers">
+                            <span class="itemIcon material-symbols-outlined">mail</span>
+                            <input type="email" name="email" class="formInput" placeholder="Enter Email" onblur="validateEmail(this, 2)" >
+                        </div>
                         <div class="emailValidation"></div>
                         <div class="emailError"></div>
                     </div>
                     <div class="formItem">
-                        <span class="itemIcon material-symbols-outlined">comment</span>
-                        <input type="text" name="message" class="formInput messageInput" placeholder="Your message" onblur="validateMessage(this, 0)" required autofocus>
+                        <label for="message"></label>
+                        <div class="inputContainers">
+                            <span class="itemIcon material-symbols-outlined">comment</span>
+                            <input type="text" name="message" class="formInput messageInput" placeholder="Your message" onblur="validateMessage(this, 0)" >
+                        </div>
                         <div class="messageValidation"></div>
                         <div class="messageError"></div>
                     </div>

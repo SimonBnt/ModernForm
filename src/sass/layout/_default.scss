@@ -11,6 +11,7 @@ html {
         
         @include respondTo(md) {
             background: linear-gradient(to right, #333, #ffa149);
+            overflow: unset;
         }
     }
 }

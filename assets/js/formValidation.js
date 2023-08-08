@@ -1,5 +1,3 @@
-// faire une classe pour les validations
-
 const submitInputs = document.querySelectorAll("input[type='submit']")
 
 const nameInputs = document.getElementById("nameInput")
@@ -26,105 +24,99 @@ const contactForm = document.getElementById("contactForm")
 const loginForm = document.getElementById("loginForm")
 const signUpForm = document.getElementById("signUpForm")
 
-const contactErrorMessages = document.querySelectorAll("#contactErrorMessages")
-const loginErrorMessages = document.querySelectorAll("#loginErrorMessages")
-const signUpErrorMessages = document.querySelectorAll("#signUpErrorMessages")
+const contactErrorMessages = document.getElementById("contactErrorMessages")
+const loginErrorMessages = document.getElementById("loginErrorMessages")
+const signUpErrorMessages = document.getElementById("signUpErrorMessages")
 
-const validateName = (input, index) => {
+let nameError = 0
+let emailError = 0
+let messageError = 0
+let passwordError = 0
+let samePasswordError = 0
+
+let totalError = [
+]
+
+console.log("total ici", totalError)
+
+const validateName = (input) => {
     if (input.value === "" || input.value == null) {
-        nameValidationMessage[index].innerHTML = ""
-        nameErrorMessage[index].innerHTML = "Your name must be complete"
-        nameErrorMessage[index].style.color = "red"
-
+        nameValidationMessage[0].innerHTML = ""
+        nameErrorMessage[0].innerHTML = "Your name must be complete"
+        nameError++
     } else if (!input.value.match(/^[A-Za-z\s]+$/)) {
-        nameValidationMessage[index].innerHTML = ""
-        nameErrorMessage[index].innerHTML = "The name must be in correct format"
-        nameErrorMessage[index].style.color = "red"
+        nameValidationMessage[0].innerHTML = ""
+        nameErrorMessage[0].innerHTML = "The name must be in correct format"
+        nameError++
     } else {
-        nameErrorMessage[index].innerHTML = ""
-        nameValidationMessage[index].innerHTML = "<i class='fas fa-check-circle'></i>"
-        nameValidationMessage[index].style.color = "mediumseagreen"
-        nameValidationMessage[index].style.position = "absolute"
-        nameValidationMessage[index].style.top = "50%"
-        nameValidationMessage[index].style.right = "1rem"
-        nameValidationMessage[index].style.transform = "translateY(-50%)"
-        nameValidationMessage[index].style.padding = "0.5rem"
+        nameErrorMessage[0].innerHTML = ""
+        nameValidationMessage[0].innerHTML = "<i class='fas fa-check-circle'></i>"
+        nameError = 0
     }
+    return totalError.push(nameError)
 }
 
 const validateEmail = (input, index) => {
     if (input.value === "" || input.value == null) {
         emailValidationMessage[index].innerHTML = ""
         emailErrorMessage[index].innerHTML = "Your mail have to be complete"
-        emailErrorMessage[index].style.color = "red"
+        emailError++
     } else if (!input.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
         emailValidationMessage[index].innerHTML = ""
         emailErrorMessage[index].innerHTML = "Your mail must be in correct format"
-        emailErrorMessage[index].style.color = "red"
+        emailError++
     } else {
         emailErrorMessage[index].innerHTML = ""
         emailValidationMessage[index].innerHTML = "<i class='fas fa-check-circle'></i>"
-        emailValidationMessage[index].style.color = "mediumseagreen"
-        emailValidationMessage[index].style.position = "absolute"
-        emailValidationMessage[index].style.top = "50%"
-        emailValidationMessage[index].style.right = "1rem"
-        emailValidationMessage[index].style.transform = "translateY(-50%)"
-        emailValidationMessage[index].style.padding = "0.5rem"
+        emailError = 0
     }
+    return totalError.push(emailError)
 }
 
-const validateMessage = (input, index) => {
+const validateMessage = (input) => {
     if (input.value === "" || input.value == null) {
-        messageValidationMessage[index].innerHTML = ""
-        messageErrorMessage[index].innerHTML = "A message is necessary to understand your need."
-        messageErrorMessage[index].style.color = "red"
+        messageValidationMessage[0].innerHTML = ""
+        messageErrorMessage[0].innerHTML = "A message is necessary to understand your need."
+        messageError++
     } else {
-        messageErrorMessage[index].innerHTML = ""
-        messageValidationMessage[index].innerHTML = "<i class='fas fa-check-circle'></i>"
-        messageValidationMessage[index].style.color = "mediumseagreen"
-        messageValidationMessage[index].style.position = "absolute"
-        messageValidationMessage[index].style.top = "50%"
-        messageValidationMessage[index].style.right = "1rem"
-        messageValidationMessage[index].style.transform = "translateY(-50%)"
-        messageValidationMessage[index].style.padding = "0.5rem"
+        messageErrorMessage[0].innerHTML = ""
+        messageValidationMessage[0].innerHTML = "<i class='fas fa-check-circle'></i>"
+        messageError = 0
     }
+    return totalError.push(messageError)
 } 
 
 const validatePassword = (input, index) => {
     if (input.value === "" || input.value == null) {
         passwordValidationMessage[index].innerHTML = ""
-        passwordErrorMessage[index].innerHTML = "Your password must not be empty to be completed"
-        passwordErrorMessage[index].style.color = "red"
+        passwordErrorMessage[index].innerHTM = "Your password must not be empty to be completed"
+        passwordError++
     } else if (!input.value.match(/^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z]).{8,}$/)) {
         passwordValidationMessage[index].innerHTML = ""
-        passwordErrorMessage[index].innerHTML = "Your password must have at least : one uppercase letter, one digit (number), one special character from the set !@#$%^&*, one lowercase letter, and at least 8 characters in total"
-        passwordErrorMessage[index].style.color = "red"
+        passwordErrorMessage[index].innerHTML = "Your password must be in a correct"
+        passwordError++
     } else {
         passwordErrorMessage[index].innerHTML = ""
         passwordValidationMessage[index].innerHTML = "<i class='fas fa-check-circle'></i>"
-        passwordValidationMessage[index].style.color = "mediumseagreen"
-        passwordValidationMessage[index].style.position = "absolute"
-        passwordValidationMessage[index].style.top = "50%"
-        passwordValidationMessage[index].style.right = "4rem"
-        passwordValidationMessage[index].style.transform = "translateY(-50%)"
-        passwordValidationMessage[index].style.padding = "0.5rem"
+        passwordValidationMessage[index].classList.add("validation--pw")
+        passwordError = 0
     }
 }
 
-const validateSamePassword = (input, index) => {
-    if (input.value !== passwordInputs[index].value) {
-        samePasswordValidationMessage[index].innerHTML = ""
-        samePasswordErrorMessage[index].innerHTML = "Passwords do not match" 
-        samePasswordErrorMessage[index].style.color = "red"
+const validateSamePassword = (input) => {
+    if (input.value === "" || input.value == null) {
+        samePasswordValidationMessage[0].innerHTML = ""
+        samePasswordErrorMessage[0].innerHTML = "Your password must not be empty to be completed"
+        samePasswordError++
+    } else if (input.value !== passwordInputs[1].value) {
+        samePasswordValidationMessage[0].innerHTML = ""
+        samePasswordErrorMessage[0].innerHTML = "Passwords do not match" 
+        samePasswordError++
     } else {
-        samePasswordErrorMessage[index].innerHTML = "" 
-        samePasswordValidationMessage[index].innerHTML = "<i class='fas fa-check-circle'></i>"
-        samePasswordValidationMessage[index].style.color = "mediumseagreen"
-        samePasswordValidationMessage[index].style.position = "absolute"
-        samePasswordValidationMessage[index].style.top = "50%"
-        samePasswordValidationMessage[index].style.right = "4rem"
-        samePasswordValidationMessage[index].style.transform = "translateY(-50%)"
-        samePasswordValidationMessage[index].style.padding = "0.5rem"
+        samePasswordErrorMessage[0].innerHTML = "" 
+        samePasswordValidationMessage[0].innerHTML = "<i class='fas fa-check-circle'></i>"
+        samePasswordValidationMessage[0].classList.add("validation--pw")
+        samePasswordError = 0
     }
 }
 
@@ -139,19 +131,19 @@ contactForm.addEventListener("submit", (e) => {
     const isFormValid = !Array.from(contactErrorMessages).some((error) => error.innerHTML !== "")
 
     if (isFormValid) {
-        contactErrorMessages[0].style.display = "block"
-        contactErrorMessages[0].innerHTML = "Your form has been submitted successfully."
-        contactErrorMessages[0].style.color = "mediumseagreen"
+        contactErrorMessages.style.display = "block"
+        contactErrorMessages.innerHTML = "Your form has been submitted successfully."
+        contactErrorMessages.style.color = "mediumseagreen"
         setTimeout(function () {
-            contactErrorMessages[0].style.display = "none"
+            contactErrorMessages.style.display = "none"
         }, 10000)
-        contactForm.submit()
+        contactForm.submit(e)
     } else {
-        contactErrorMessages[0].style.display = "block"
-        contactErrorMessages[0].innerHTML = "Please fill the form correctly before submitting."
-        contactErrorMessages[0].style.color = "indianred"
+        contactErrorMessages.style.display = "block"
+        contactErrorMessages.innerHTML = "Please fill the form correctly before submitting."
+        contactErrorMessages.style.color = "indianred"
         setTimeout(function () {
-            contactErrorMessages[0].style.display = "none"
+            contactErrorMessages.style.display = "none"
         }, 10000)
     }
 })
@@ -166,19 +158,19 @@ loginForm.addEventListener("submit", (e) => {
     const isFormValid = !Array.from(loginErrorMessages).some((error) => error.innerHTML !== "")
 
     if (isFormValid) {
-        loginErrorMessages[0].style.display = "block"
-        loginErrorMessages[0].innerHTML = "Your login form has been submitted successfully."
-        loginErrorMessages[0].style.color = "mediumseagreen"
+        loginErrorMessages.style.display = "block"
+        loginErrorMessages.innerHTML = "Your login form has been submitted successfully."
+        loginErrorMessages.style.color = "mediumseagreen"
         setTimeout(function () {
-            loginErrorMessages[0].style.display = "none"
+            loginErrorMessages.style.display = "none"
         }, 10000)
-        loginForm.submit()
+        loginForm.submit(e)
     } else {
-        loginErrorMessages[0].style.display = "block"
-        loginErrorMessages[0].innerHTML = "Please fill the form correctly before submitting."
-        loginErrorMessages[0].style.color = "indianred"
+        loginErrorMessages.style.display = "block"
+        loginErrorMessages.innerHTML = "Please fill the form correctly before submitting."
+        loginErrorMessages.style.color = "indianred"
         setTimeout(function () {
-            loginErrorMessages[0].style.display = "none"
+            loginErrorMessages.style.display = "none"
         }, 10000)
     }
 })
@@ -200,7 +192,7 @@ signUpForm.addEventListener("submit", (e) => {
         setTimeout(function () {
             signUpErrorMessages[0].style.display = "none"
         }, 10000)
-        signUpForm.submit()
+        signUpForm.submit(e)
     } else {
         signUpErrorMessages[0].style.display = "block"
         signUpErrorMessages[0].innerHTML = "Please fill the form correctly before submitting."
