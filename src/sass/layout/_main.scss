@@ -315,11 +315,11 @@ main {
                             top: 50%;
                             transform: translateY(-50%);
                             padding: 0.5rem;
-                            right: 4rem;
+                            right: 4rem !important;
                         }
                     }
 
-                    .nameValidation, .emailValidation, .messageValidation, .passwordValidation, .samePasswordValidation {
+                    .nameValidation, .emailValidation, .messageValidation, .passwordValidation, #samePasswordValidation {
                         position: absolute;
                         font-size: 0.75rem;
                         color: mediumseagreen;
@@ -330,7 +330,7 @@ main {
                         padding: 0.5rem;
                     }
                     
-                    .emailError, .nameError, .messageError, .passwordError, .samePasswordError {
+                    .emailError, .nameError, .messageError, .passwordError, #samePasswordError {
                         font-size: 0.75rem;
                         margin-left: 2rem;
                         color: red;

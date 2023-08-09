@@ -1,204 +1,146 @@
 const submitInputs = document.querySelectorAll("input[type='submit']")
 
-const nameInputs = document.getElementById("nameInput")
-const nameValidationMessage = document.querySelectorAll(".nameValidation")
-const nameErrorMessage = document.querySelectorAll(".nameError")
+const nameInput = document.getElementById("nameInput")
+const nameValidationMessage = document.querySelector(".nameValidation")
+const nameErrorMessage = document.querySelector(".nameError")
 
 const emailInputs = document.querySelectorAll("input[type='email']")
 const emailValidationMessage = document.querySelectorAll(".emailValidation")
 const emailErrorMessage = document.querySelectorAll(".emailError")
 
-const messageInputs = document.querySelectorAll(".messageInput")
-const messageValidationMessage = document.querySelectorAll(".messageValidation")
-const messageErrorMessage = document.querySelectorAll(".messageError")
+const messageInput = document.querySelector(".messageInput")
+const messageValidationMessage = document.querySelector(".messageValidation")
+const messageErrorMessage = document.querySelector(".messageError")
 
 const passwordInputs = document.querySelectorAll("input[type='password']")
 const passwordErrorMessage = document.querySelectorAll(".passwordError")
 const passwordValidationMessage = document.querySelectorAll(".passwordValidation")
 
-const samePasswordInputs = document.querySelectorAll("input[name='samepassword']")
-const samePasswordErrorMessage = document.querySelectorAll(".samePasswordError")
-const samePasswordValidationMessage = document.querySelectorAll(".samePasswordValidation")
+const samePasswordInput = document.getElementById("samePasswordInput")
+const samePasswordErrorMessage = document.getElementById("samePasswordError")
+const samePasswordValidationMessage = document.getElementById("samePasswordValidation")
 
 const contactForm = document.getElementById("contactForm")
 const loginForm = document.getElementById("loginForm")
 const signUpForm = document.getElementById("signUpForm")
 
-const contactErrorMessages = document.getElementById("contactErrorMessages")
-const loginErrorMessages = document.getElementById("loginErrorMessages")
-const signUpErrorMessages = document.getElementById("signUpErrorMessages")
-
-let nameError = 0
-let emailError = 0
-let messageError = 0
-let passwordError = 0
-let samePasswordError = 0
-
-let totalError = [
-]
-
-console.log("total ici", totalError)
+const contactErrorMessage = document.getElementById("contactErrorMessage")
+const loginErrorMessage = document.getElementById("loginErrorMessage")
+const signUpErrorMessage = document.getElementById("signUpErrorMessage")
 
 const validateName = (input) => {
     if (input.value === "" || input.value == null) {
-        nameValidationMessage[0].innerHTML = ""
-        nameErrorMessage[0].innerHTML = "Your name must be complete"
-        nameError++
+        nameValidationMessage.innerHTML = ""
+        nameErrorMessage.innerHTML = "Your name must be complete"
     } else if (!input.value.match(/^[A-Za-z\s]+$/)) {
-        nameValidationMessage[0].innerHTML = ""
-        nameErrorMessage[0].innerHTML = "The name must be in correct format"
-        nameError++
+        nameValidationMessage.innerHTML = ""
+        nameErrorMessage.innerHTML = "The name must be in correct format"
     } else {
-        nameErrorMessage[0].innerHTML = ""
-        nameValidationMessage[0].innerHTML = "<i class='fas fa-check-circle'></i>"
-        nameError = 0
+        nameErrorMessage.innerHTML = ""
+        nameValidationMessage.innerHTML = "<i class='fas fa-check-circle'></i>"
     }
-    return totalError.push(nameError)
+}
+
+const displayMessage = (element, message, color) => {
+    element.style.display = "block"
+    element.innerHTML = message
+    element.style.color = color
 }
 
 const validateEmail = (input, index) => {
     if (input.value === "" || input.value == null) {
         emailValidationMessage[index].innerHTML = ""
         emailErrorMessage[index].innerHTML = "Your mail have to be complete"
-        emailError++
     } else if (!input.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
         emailValidationMessage[index].innerHTML = ""
         emailErrorMessage[index].innerHTML = "Your mail must be in correct format"
-        emailError++
     } else {
         emailErrorMessage[index].innerHTML = ""
         emailValidationMessage[index].innerHTML = "<i class='fas fa-check-circle'></i>"
-        emailError = 0
     }
-    return totalError.push(emailError)
 }
 
 const validateMessage = (input) => {
     if (input.value === "" || input.value == null) {
-        messageValidationMessage[0].innerHTML = ""
-        messageErrorMessage[0].innerHTML = "A message is necessary to understand your need."
-        messageError++
+        messageValidationMessage.innerHTML = ""
+        messageErrorMessage.innerHTML = "A message is necessary to understand your need."
     } else {
-        messageErrorMessage[0].innerHTML = ""
-        messageValidationMessage[0].innerHTML = "<i class='fas fa-check-circle'></i>"
-        messageError = 0
+        messageErrorMessage.innerHTML = ""
+        messageValidationMessage.innerHTML = "<i class='fas fa-check-circle'></i>"
     }
-    return totalError.push(messageError)
 } 
 
 const validatePassword = (input, index) => {
     if (input.value === "" || input.value == null) {
         passwordValidationMessage[index].innerHTML = ""
-        passwordErrorMessage[index].innerHTM = "Your password must not be empty to be completed"
-        passwordError++
+        passwordErrorMessage[index].innerHTML = "Your password must not be empty to be completed"
     } else if (!input.value.match(/^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z]).{8,}$/)) {
         passwordValidationMessage[index].innerHTML = ""
         passwordErrorMessage[index].innerHTML = "Your password must be in a correct"
-        passwordError++
     } else {
         passwordErrorMessage[index].innerHTML = ""
         passwordValidationMessage[index].innerHTML = "<i class='fas fa-check-circle'></i>"
         passwordValidationMessage[index].classList.add("validation--pw")
-        passwordError = 0
     }
 }
 
 const validateSamePassword = (input) => {
     if (input.value === "" || input.value == null) {
-        samePasswordValidationMessage[0].innerHTML = ""
-        samePasswordErrorMessage[0].innerHTML = "Your password must not be empty to be completed"
-        samePasswordError++
+        samePasswordValidationMessage.innerHTML = ""
+        samePasswordErrorMessage.innerHTML = "Your password must not be empty to be completed"
     } else if (input.value !== passwordInputs[1].value) {
-        samePasswordValidationMessage[0].innerHTML = ""
-        samePasswordErrorMessage[0].innerHTML = "Passwords do not match" 
-        samePasswordError++
+        samePasswordValidationMessage.innerHTML = ""
+        samePasswordErrorMessage.innerHTML = "Passwords do not match" 
     } else {
-        samePasswordErrorMessage[0].innerHTML = "" 
-        samePasswordValidationMessage[0].innerHTML = "<i class='fas fa-check-circle'></i>"
-        samePasswordValidationMessage[0].classList.add("validation--pw")
-        samePasswordError = 0
+        samePasswordErrorMessage.innerHTML = "" 
+        samePasswordValidationMessage.innerHTML = "<i class='fas fa-check-circle'></i>"
+        samePasswordValidationMessage.classList.add("validation--pw")
     }
 }
 
 contactForm.addEventListener("submit", (e) => {
-    e.preventDefault()
+    validateName(nameInput)
+    validateEmail(emailInputs[2], 2)
+    validateMessage(messageInput)
 
-    validateName()
-    validateEmail()
-    validateMessage()
+    const errorMessages = [nameErrorMessage.innerHTML, emailErrorMessage[2].innerHTML, messageErrorMessage.innerHTML]
 
-    // Check if all fields are valid
-    const isFormValid = !Array.from(contactErrorMessages).some((error) => error.innerHTML !== "")
-
-    if (isFormValid) {
-        contactErrorMessages.style.display = "block"
-        contactErrorMessages.innerHTML = "Your form has been submitted successfully."
-        contactErrorMessages.style.color = "mediumseagreen"
-        setTimeout(function () {
-            contactErrorMessages.style.display = "none"
-        }, 10000)
-        contactForm.submit(e)
+    if (errorMessages.some(message => message !== "")) {
+        displayMessage(contactErrorMessage, "Please fill the form correctly before submitting.", "indianred")
+        e.preventDefault()
     } else {
-        contactErrorMessages.style.display = "block"
-        contactErrorMessages.innerHTML = "Please fill the form correctly before submitting."
-        contactErrorMessages.style.color = "indianred"
-        setTimeout(function () {
-            contactErrorMessages.style.display = "none"
-        }, 10000)
+        displayMessage(contactErrorMessage, "Your form has been submitted successfully.", "mediumseagreen")
+        contactForm.submit()
     }
 })
 
 loginForm.addEventListener("submit", (e) => {
-    e.preventDefault()
-
-    validateEmail()
-    validatePassword()
-
-    // Check if all fields are valid
-    const isFormValid = !Array.from(loginErrorMessages).some((error) => error.innerHTML !== "")
-
-    if (isFormValid) {
-        loginErrorMessages.style.display = "block"
-        loginErrorMessages.innerHTML = "Your login form has been submitted successfully."
-        loginErrorMessages.style.color = "mediumseagreen"
-        setTimeout(function () {
-            loginErrorMessages.style.display = "none"
-        }, 10000)
-        loginForm.submit(e)
+    validateEmail(emailInputs[0], 0)
+    validatePassword(passwordInputs[0], 0)
+    
+    const errorMessages = [emailErrorMessage[0].innerHTML, passwordErrorMessage[0].innerHTML]
+    
+    if (errorMessages.some(message => message !== "")) {
+        displayMessage(loginErrorMessage, "Please fill the form correctly before submitting.", "indianred")
+        e.preventDefault()
     } else {
-        loginErrorMessages.style.display = "block"
-        loginErrorMessages.innerHTML = "Please fill the form correctly before submitting."
-        loginErrorMessages.style.color = "indianred"
-        setTimeout(function () {
-            loginErrorMessages.style.display = "none"
-        }, 10000)
+        displayMessage(loginErrorMessage, "Your form has been submitted successfully.", "mediumseagreen")
+        contactForm.submit()
     }
 })
 
 signUpForm.addEventListener("submit", (e) => {
-    e.preventDefault()
+    validateEmail(emailInputs[1], 1)
+    validatePassword(passwordInputs[1], 1)
+    validateSamePassword(samePasswordInput)
 
-    validateEmail()
-    validatePassword()
-    validateSamePassword()
+    const errorMessages = [emailErrorMessage[1].innerHTML, passwordErrorMessage[1].innerHTML, samePasswordErrorMessage.innerHTML]
 
-    // Check if all fields are valid
-    const isFormValid = !Array.from(signUpErrorMessages).some((error) => error.innerHTML !== "")
-
-    if (isFormValid) {
-        signUpErrorMessages[0].style.display = "block"
-        signUpErrorMessages[0].innerHTML = "Your sign-up form has been submitted successfully."
-        signUpErrorMessages[0].style.color = "mediumseagreen"
-        setTimeout(function () {
-            signUpErrorMessages[0].style.display = "none"
-        }, 10000)
-        signUpForm.submit(e)
+    if (errorMessages.some(message => message !== "")) {
+        displayMessage(signUpErrorMessage, "Please fill the form correctly before submitting.", "indianred")
+        e.preventDefault()
     } else {
-        signUpErrorMessages[0].style.display = "block"
-        signUpErrorMessages[0].innerHTML = "Please fill the form correctly before submitting."
-        signUpErrorMessages[0].style.color = "indianred"
-        setTimeout(function () {
-            signUpErrorMessages[0].style.display = "none"
-        }, 10000)
+        displayMessage(signUpErrorMessage, "Your form has been submitted successfully.", "mediumseagreen")
+        contactForm.submit()
     }
 })

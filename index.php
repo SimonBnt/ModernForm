@@ -66,15 +66,15 @@
                     <h3 class="formTitle">Sign In</h3>
                     <p class="formTxt">Please login to use platform</p>
                 </div>
-                <form action="login_form_process.php" method="POST" class="forms" id="loginForm">
+                <form action="form_process.php" method="POST" class="forms" id="loginForm">
                     <div class="formItem">
                         <label for="email"></label>
                         <div class="inputContainers">
                             <span class="itemIcon material-symbols-outlined">mail</span>
-                            <input type="email" name="email" onblur="validateEmail(this, 0)" class="formInput" placeholder="Enter Email" required>
+                            <input type="email" name="email" aria-describedby="emailError emailValidation" onblur="validateEmail(this, 0)" class="formInput" placeholder="Enter Email" required>
                         </div>
-                        <div class="emailValidation"></div>
-                        <div class="emailError"></div>
+                        <div class="emailValidation" aria-live="polite"></div>
+                        <div class="emailError" aria-live="polite"></div>
                     </div>
                     <div class="formItem">
                         <div class="labelContainers">
@@ -82,12 +82,12 @@
                         </div>
                         <div class="inputContainers">
                             <span class="itemIcon material-symbols-outlined">lock</span>
-                            <input type="password" name="password" class="formInput" placeholder="Enter Password" onblur="validatePassword(this, 0)" required>
+                            <input type="password" name="password" class="formInput" aria-describedby="passwordError passwordValidation" placeholder="Enter Password" onblur="validatePassword(this, 0)" required>
                             <span class="material-symbols-outlined showIcon">visibility</span>
                             <span class="material-symbols-outlined hideIcon">visibility_off</span>
-                            <div class="passwordValidation"></div>
+                            <div class="passwordValidation" aria-live="polite"></div>
                         </div>
-                        <div class="passwordError"></div>
+                        <div class="passwordError" aria-live="polite"></div>
                     </div>
                     <div class="formItemOther">
                         <div id="checkboxContainer">
@@ -102,7 +102,7 @@
                     <span>Don't have an account ?</span><a href="#"> Create a free account here !</a>
                 </div>
                 <div class="errorMessagesContainers">
-                    <div id="loginErrorMessages"></div>
+                    <div id="loginErrorMessage" aria-live="polite"></div>
                 </div>
             </div>
             <div id="formCardSocial">
@@ -136,15 +136,15 @@
                     <h3 class="formTitle">Sign Up</h3>
                     <p class="formTxt">If you don't have an account, please sign up to use platform</p>
                 </div>
-                <form action="signup_form_process.php" method="POST" class="forms" id="signUpForm">
+                <form action="form_process.php" method="POST" class="forms" id="signUpForm">
                     <div class="formItem">
                         <label for="email"></label>
                         <div class="inputContainers">
                             <span class="itemIcon material-symbols-outlined">mail</span>
-                            <input type="email" name="email" onblur="validateEmail(this, 1)" class="formInput" placeholder="Enter Email" required>
+                            <input type="email" name="email" aria-describedby="emailError emailValidation" onblur="validateEmail(this, 1)" class="formInput" placeholder="Enter Email" required>
                         </div>
-                        <div class="emailValidation"></div>
-                        <div class="emailError"></div>
+                        <div class="emailValidation" aria-live="polite"></div>
+                        <div class="emailError" aria-live="polite"></div>
                     </div>
                     <div class="formItem">
                         <div>
@@ -153,24 +153,24 @@
                             </div>
                             <div class="inputContainers">
                                 <span class="itemIcon material-symbols-outlined">lock</span>
-                                <input type="password" name="password" class="formInput" placeholder="Enter Password" onblur="validatePassword(this, 1)" required>
+                                <input type="password" name="password" class="formInput" aria-describedby="nameError nameValidation" placeholder="Enter Password" onblur="validatePassword(this, 1)" required>
                                 <span class="material-symbols-outlined showIcon">visibility</span>
                                 <span class="material-symbols-outlined hideIcon">visibility_off</span>
-                                <div class="passwordValidation"></div>
+                                <div class="passwordValidation" aria-live="polite"></div>
                             </div>
                         </div>
-                        <div class="passwordError"></div>
+                        <div class="passwordError" aria-live="polite"></div>
                     </div>
                     <div class="formItem">
                         <label for="samepassword"></label>
                         <div class="inputContainers">
                             <span class="itemIcon material-symbols-outlined">lock</span>
-                            <input type="password" name="samepassword" class="formInput" placeholder="Confirm Password" onblur="validateSamePassword(this, 0)" required>
+                            <input type="password" name="samepassword" class="formInput" aria-describedby="samePasswordError samePasswordValidation" id="samePasswordInput" placeholder="Confirm Password" onblur="validateSamePassword(this)" required>
                             <span class="material-symbols-outlined showIcon">visibility</span>
                             <span class="material-symbols-outlined hideIcon">visibility_off</span>
-                            <div class="samePasswordValidation"></div>
+                            <div id="samePasswordValidation" aria-live="polite"></div>
                         </div>
-                        <div class="samePasswordError"></div>
+                        <div id="samePasswordError" aria-live="polite"></div>
                     </div>
                     <button class="formBtn" name="submit" type="submit">sign up</button>
                 </form>
@@ -178,7 +178,7 @@
                     <span>Already have an account ?</span><a href="#"> Login here !</a>
                 </div>
                 <div class="errorMessagesContainers">
-                    <div id="signUpErrorMessages"></div>
+                    <div id="signUpErrorMessage"></div>
                 </div>
             </div>
             <div id="formCardSocial">
@@ -217,32 +217,32 @@
                         <label for="name"></label>
                         <div class="inputContainers">
                             <span class="itemIcon material-symbols-outlined">person</span>
-                            <input type="text" name="name" class="formInput nameInput" placeholder="Enter your full name" onblur="validateName(this, 0)" >
+                            <input type="text" name="name" id="nameInput" aria-describedby="nameError nameValidation" class="formInput" placeholder="Enter your full name" onblur="validateName(this)" required>
                         </div>
-                        <div class="nameValidation"></div>
-                        <div class="nameError"></div>
+                        <div class="nameValidation" aria-live="polite"></div>
+                        <div class="nameError" aria-live="polite"></div>
                     </div>
                     <div class="formItem">
                         <label for="email"></label>
                         <div class="inputContainers">
                             <span class="itemIcon material-symbols-outlined">mail</span>
-                            <input type="email" name="email" class="formInput" placeholder="Enter Email" onblur="validateEmail(this, 2)" >
+                            <input type="email" name="email" class="formInput" aria-describedby="emailError emailValidation" placeholder="Enter Email" onblur="validateEmail(this, 2)" required>
                         </div>
-                        <div class="emailValidation"></div>
-                        <div class="emailError"></div>
+                        <div class="emailValidation" aria-live="polite"></div>
+                        <div class="emailError" aria-live="polite"></div>
                     </div>
                     <div class="formItem">
                         <label for="message"></label>
                         <div class="inputContainers">
                             <span class="itemIcon material-symbols-outlined">comment</span>
-                            <input type="text" name="message" class="formInput messageInput" placeholder="Your message" onblur="validateMessage(this, 0)" >
+                            <input type="text" name="message" aria-describedby="messageError messageValidation" class="formInput messageInput" placeholder="Your message" onblur="validateMessage(this)" required>
                         </div>
-                        <div class="messageValidation"></div>
-                        <div class="messageError"></div>
+                        <div class="messageValidation" aria-live="polite"></div>
+                        <div class="messageError" aria-live="polite"></div>
                     </div>
                     <button class="formBtn" name="submit" type="submit">SUBMIT</button>
                     <div class="errorMessagesContainers">
-                        <div id="contactErrorMessages"></div>
+                        <div id="contactErrorMessage"></div>
                     </div>
                 </form>
             </div>
