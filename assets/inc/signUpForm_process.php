@@ -1,22 +1,13 @@
 <?php
-    $name = $email = $message = $password = $samePassword = "";
+    require_once "db_config.php";
+    require_once "function.php";
 
-    // $nameError = $emailError = $messageError = $passwordError = $samePasswordError = "";
+    $email = $password = $samePassword = "";
 
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST) && !empty($_POST)) {
-        $name = testInput($_POST["name"]);
         $email = testInput($_POST["email"]);
-        $message = testInput($_POST["message"]);
         $password = testInput($_POST["password"]);
         $samePassword = testInput($_POST["samepassword"]);
-
-        if (empty(["name"])) {
-            header("Location: index.php");
-            exit;
-        } elseif (!preg_match("/^[a-zA-Z-']*$/", $name)) {
-            header("Location: index.php");
-            exit;
-        };
 
         if (empty(["email"])) {
             header("Location: index.php");
@@ -26,19 +17,10 @@
             exit;
         };
 
-        if (empty(["message"])) {
-            header("Location: index.php");
-            exit;
-        } elseif (!is_string($email) || !preg_match("/^([a-z0-9,?!;.: ]+)$/", $message) || strlen($message) > 255) {
-            header("Location: index.php");
-            exit;
-        };
-
         if (empty(["password"])) {
             header("Location: index.php");
             exit;
         } elseif (!preg_match("/^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z]).{8,}$/", $password)) {
-            
             header("Location: index.php");
             exit;
         } else {
@@ -58,12 +40,7 @@
         } else {
             $hashedSamePassword = password_hash($samePassword, PASSWORD_BCRYPT, $hashOptions);
         };
-    };
 
-    function testInput($data) {
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
-    };
+        addUser($email, $hashedPassword, $samePassword);
+    }
 ?>

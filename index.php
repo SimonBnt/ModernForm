@@ -66,7 +66,7 @@
                     <h3 class="formTitle">Sign In</h3>
                     <p class="formTxt">Please login to use platform</p>
                 </div>
-                <form action="form_process.php" method="POST" class="forms" id="loginForm">
+                <form action="/assets/inc/signInForm_process.php" method="POST" class="forms" id="loginForm">
                     <div class="formItem">
                         <label for="email"></label>
                         <div class="inputContainers">
@@ -136,7 +136,7 @@
                     <h3 class="formTitle">Sign Up</h3>
                     <p class="formTxt">If you don't have an account, please sign up to use platform</p>
                 </div>
-                <form action="form_process.php" method="POST" class="forms" id="signUpForm">
+                <form action="/assets/inc/signUpForm_process.php" method="POST" class="forms" id="signUpForm">
                     <div class="formItem">
                         <label for="email"></label>
                         <div class="inputContainers">
@@ -212,7 +212,7 @@
                     <h3 class="formTitle">Contact us</h3>
                     <p class="formTxt">Please fill this form before submitting</p>
                 </div>
-                <form action="form_process.php" method="POST" class="forms" id="contactForm">
+                <form action="/assets/inc/contactForm_process.php" method="POST" class="forms" id="contactForm">
                     <div class="formItem">
                         <label for="name"></label>
                         <div class="inputContainers">
