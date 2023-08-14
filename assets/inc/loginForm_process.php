@@ -1,5 +1,4 @@
 <?php
-    require_once "db_config.php";
     require_once "function.php";
 
     $email = $password = "";
@@ -18,14 +17,8 @@
             exit;
         } elseif (!preg_match("/^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z]).{8,}$/", $password)) {
             exit;
-        } else {
-            $hashOptions = [
-                "cost" => 12,
-            ]; 
-    
-            $hashedPassword = password_hash($password, PASSWORD_BCRYPT, $hashOptions);
         };
 
-        login($email,$hashedPassword);
+        login($email,$password);
     }
 ?>

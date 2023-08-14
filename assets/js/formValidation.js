@@ -28,6 +28,32 @@ const contactErrorMessage = document.getElementById("contactErrorMessage")
 const loginErrorMessage = document.getElementById("loginErrorMessage")
 const signUpErrorMessage = document.getElementById("signUpErrorMessage")
 
+const displayMessage = (element, message, color) => {
+    element.style.display = "block"
+    element.innerHTML = message
+    element.style.color = color
+}
+
+const clearErrorMessage = (errorMessage) => {
+    errorMessage.innerHTML = ""
+}
+
+const resetForm = (form) => {
+    form.reset()
+    clearErrorMessage(contactErrorMessage)
+    clearErrorMessage(loginErrorMessage)
+    clearErrorMessage(signUpErrorMessage)
+    nameValidationMessage.innerHTML = ""
+    emailValidationMessage.forEach((message) => {
+        message.innerHTML = ""
+    })
+    messageValidationMessage.innerHTML = ""
+    passwordValidationMessage.forEach((message) => {
+        message.innerHTML = ""
+    })
+    samePasswordValidationMessage.innerHTML = ""
+}
+
 const validateName = (input) => {
     if (input.value === "" || input.value == null) {
         nameValidationMessage.innerHTML = ""
@@ -39,12 +65,6 @@ const validateName = (input) => {
         nameErrorMessage.innerHTML = ""
         nameValidationMessage.innerHTML = "<i class='fas fa-check-circle'></i>"
     }
-}
-
-const displayMessage = (element, message, color) => {
-    element.style.display = "block"
-    element.innerHTML = message
-    element.style.color = color
 }
 
 const validateEmail = (input, index) => {
@@ -76,7 +96,7 @@ const validatePassword = (input, index) => {
         passwordErrorMessage[index].innerHTML = "Your password must not be empty to be completed"
     } else if (!input.value.match(/^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z]).{8,}$/)) {
         passwordValidationMessage[index].innerHTML = ""
-        passwordErrorMessage[index].innerHTML = "Your password must be in a correct"
+        passwordErrorMessage[index].innerHTML = "Your password must be in a correct format"
     } else {
         passwordErrorMessage[index].innerHTML = ""
         passwordValidationMessage[index].innerHTML = "<i class='fas fa-check-circle'></i>"
@@ -111,6 +131,7 @@ contactForm.addEventListener("submit", (e) => {
     } else {
         displayMessage(contactErrorMessage, "Your form has been submitted successfully.", "mediumseagreen")
         contactForm.submit()
+        resetForm(contactForm)
     }
 })
 
@@ -125,7 +146,8 @@ loginForm.addEventListener("submit", (e) => {
         e.preventDefault()
     } else {
         displayMessage(loginErrorMessage, "Your form has been submitted successfully.", "mediumseagreen")
-        contactForm.submit()
+        loginForm.submit()
+        resetForm(loginForm)
     }
 })
 
@@ -141,6 +163,7 @@ signUpForm.addEventListener("submit", (e) => {
         e.preventDefault()
     } else {
         displayMessage(signUpErrorMessage, "Your form has been submitted successfully.", "mediumseagreen")
-        contactForm.submit()
+        signUpForm.submit()
+        resetForm(signUpForm)
     }
 })

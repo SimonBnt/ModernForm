@@ -1,3 +1,7 @@
+<?php 
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,6 +56,21 @@
             </div>
         </div>
     </header>
+        <?php 
+            if (isset($_SESSION["errorMessage"]) && !empty($_SESSION["errorMessage"])) {
+                echo "<div id='errorMessage' class='sessionMessage'>";
+                echo $_SESSION['errorMessage'];
+                echo "</div>";
+                unset($_SESSION["errorMessage"]);
+            }
+
+            if (isset($_SESSION["validationMessage"]) && !empty($_SESSION["validationMessage"])) {
+                echo "<div id='validationMessage' class='sessionMessage'>";
+                echo $_SESSION['validationMessage'];
+                echo "</div>";
+                unset($_SESSION["validationMessage"]);
+            }
+        ?>
     <main>
         
                              <!-- LOGIN FORM -->
@@ -78,7 +97,7 @@
                     </div>
                     <div class="formItem">
                         <div class="labelContainers">
-                            <label for="password">Your password must have at least :<br>- One uppercase letter<br>- One digit (number)<br>- One special character from the set !@#$%^&*<br>- One lowercase letter<br>- And at least 8 characters in total</label>
+                            <label for="password"></label>
                         </div>
                         <div class="inputContainers">
                             <span class="itemIcon material-symbols-outlined">lock</span>

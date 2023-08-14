@@ -5,26 +5,30 @@
     // function sendEmail($to, $subject, $name, $email, $message) {
 
     // }
-
-    function login($email, $hashedPassword) {
+    
+    function login($email, $password) {
         session_start();
         global $pdo;
-        
-        
+    
         try {
-            $query = $pdo -> prepare("SELECT * FROM users WHERE email=? and password=?"); 
-            $query -> setFetchMode(PDO::FETCH_ASSOC);
-            $query -> execute([$email, md5($hashedPassword)]);
-            $tab = $query -> fetchAll();
+            $query = $pdo->prepare("SELECT * FROM users WHERE email=?"); 
+            $query->setFetchMode(PDO::FETCH_ASSOC);
+            $query->execute([$email]);
+            $user = $query->fetch();
 
-            if (count($tab) !== 0) {
+            if(empty($user) || $user === false) {
+                $_SESSION["errorMessage"] = "Login failed.";
+            } elseif (!password_verify($password, $user["password"])) {
+                $_SESSION["errorMessage"] = "Wrong password.";
+            } else {
+                $_SESSION["validationMessage"] = "You are successfully connected.";
                 $_SESSION["connected"] = true;
             }
-            echo "Vous êtes bien connecté";
         } catch (PDOException $e) {
-            return [$e -> getCode()];
-            echo "Une erreur est intervenue et vous n'avez pas pu vous connecter";
             session_destroy();
+            error_log("Database error: " . $e->getMessage());
+        } finally {
+            header("location:../../index.php");
         }
     }
 
@@ -32,16 +36,19 @@
         session_start();
         global $pdo;
 
-        if (password_verify($samePassword, $hashedPassword)) {
-            try {
-                $query = $pdo -> prepare("INSERT INTO users (email, password) VALUES ('$email', '$hashedPassword')"); 
-                $query -> execute();
-                echo "Votre compte a bien été ajouté";
-            } catch (PDOException $e) {
-                return [$e -> getCode()];
-                echo "Une erreur est intervenue et votre compte n'a pas pu être ajouté";
-                session_destroy();
+        try {
+            if (password_verify($samePassword, $hashedPassword)) {
+                $query = $pdo->prepare("INSERT INTO users (email, password) VALUES ('$email', '$hashedPassword')"); 
+                $query->execute();
+                $_SESSION["validationMessage"] = "Your account has been successfully added.";
+            } else {
+                $_SESSION["errorMessage"] = "An error occurred, and your account could not be added.";
             }
+        } catch (PDOException $e) {
+            session_destroy();
+            error_log("Database error: " . $e->getMessage());
+        } finally {
+            header("location:../../index.php");
         }
     }
 

@@ -1,5 +1,4 @@
 <?php
-    require_once "db_config.php";
     require_once "mailer.php";
     require_once "function.php";
 
