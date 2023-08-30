@@ -1,11 +1,6 @@
 <?php
     require_once "db_config.php";
-    // require_once "mailer.php";
 
-    // function sendEmail($to, $subject, $name, $email, $message) {
-
-    // }
-    
     function login($email, $password) {
         session_start();
         global $pdo;

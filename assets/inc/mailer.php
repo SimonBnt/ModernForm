@@ -1,38 +1,68 @@
 <?php
-    // require_once "contactForm_process.php";
+    require_once "../../vendor/autoload.php";
 
-    // use PHPMailer\PHPMailer\PHPMailer;
-    // use PHPMailer\PHPMailer\Exception;
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\SMTP;
+    use PHPMailer\PHPMailer\Exception;
 
-    // $to = "adresse.test.mail.signature@gmail.com";
-    // $subject = "New contact form submission";
-    // // $email_message = "Name : $name\n";
-    // // $email_message .= "Email : $email\n";
-    // // $email_message .= "Message : $message\n";
-    // // $headers = "From : $email\r\n";
-    // // $headers .= "Reply-To : $email\r\n";
+    if (isset($_SESSION["name"])) {
+        $name = $_SESSION["name"];
+        echo '<pre>';
+        echo "name = " . $name . " ";
+        echo '</pre>';
+    } else {
+        exit;
+    }
 
-    // $mail = new PHPMailer(exception : true);
+    if (isset($_SESSION["email"])) {
+        $email = $_SESSION["email"];
+        echo '<pre>';
+        echo "email = " . $email . " ";
+        echo '</pre>';
+    } else {
+        exit;
+    }
 
-    // try {
-    //     $mail -> isSMTP();
-    //     $mail -> Host = "";
-    //     $mail -> SMTPAuth = true;
-    //     $mail -> Username = "";
-    //     $mail -> Password = "";
-    //     $mail -> SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-    //     $mail -> Port = "";
+    if (isset($_SESSION["message"])) {
+        $message = $_SESSION["message"];
+        echo '<pre>';
+        echo "message = " . $message . " ";
+        echo '</pre>';
+    } else {
+        exit;
+    }
 
-    //     $mail -> setForm($email);
-    //     $mail -> addAdress($to);
-    //     $mail -> Subject = $subject;
-    //     $mail -> isHTML(isHTML: true);
-    //     $mail -> Body = "<p>Name : {$name}</p><p>Email : {$email}</p><p>Message : {$message}</p>";
+    $to = "adresse.test.mail.signature@gmail.com";
+    $subject = "New contact form submission";
+    
+    try {
+        $mail = new PHPMailer(true);
+        $mail->isSMTP();                                            
+        // $mail->isHTML(true);                                  
+        $mail->SMTPAuth = true;                                   
+        $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      
 
-    //     $mail -> send();
+        $mail->Host = "smtp.example.com";                     
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;           
+        $mail->Port = 587;           
 
-    //     $successMessage = "<p> style='color = green;'>Succes</p>";
-    // } catch (Exception $error) {
-    //     $errorMessage = "<p style='color: red;'>Error</p>";
-    // }
+        $mail->Username = "example@example.com";                     
+        $mail->Password = "";                               
+
+        $mail->setFrom($email);
+        $mail->addAddress($to);
+
+        $mail->Subject = $subject;
+        $mail->Body = "<p>Name : {$name}</p><p>Email : {$email}</p><p>Message : {$message}</p>";
+
+        $mail->send();
+
+        echo "email send";
+
+        $successMessage = "<p> style='color: green;'>Succes</p>";
+        echo $successMessage;
+    } catch (Exception $error) {
+        $errorMessage = "<p style='color: red;'>Error</p>";
+        echo $errorMessage;
+    }
 ?>

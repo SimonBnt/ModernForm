@@ -3,11 +3,12 @@
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
 
+    session_start();
+
     $host = 'localhost';
     $Db = 'signupform';
     $user = 'root';
     $password = 'root';
-
 
     $connection = "mysql:host=$host;dbname=$Db;charset=utf8mb4";
 
