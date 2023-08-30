@@ -1,5 +1,5 @@
 <?php
-    require_once "mailer.php";
+    // require_once "mailer.php";
     require_once "function.php";
 
     $name = $email = $message = "";

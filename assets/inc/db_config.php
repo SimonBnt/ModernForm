@@ -13,6 +13,7 @@
 
     try {
         $pdo = new PDO($connection, $user, $password);
+        // $pdo = new PDO($connection, $user);
 
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
