@@ -152,8 +152,10 @@ main {
                     width: 64px;
                     
                     @include respondTo(md) {
+                        transition: 2s;
+                        
                         &:hover {
-                            transition-duration: 1.2s;
+                            transition: 2s;
                             transform: rotate(360deg);
                         }
                     }
